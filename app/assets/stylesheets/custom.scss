@@ -57,13 +57,18 @@ a {
   }
 
   .menu {
-    width: 80%;
+    width: 60%;
     justify-content: space-between;
 
     .menu-item {
       float: left;
       margin: 0 15px;
     }
+  }
+
+  .username {
+    font-size: 13px;
+    color: yellow;
   }
 }
 

@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <nav class="nav">
+    <nav class="nav navbar">
       <%= link_to 'Stay in touch', root_path %>
       <div class="menu">
         <div class="menu-item">
@@ -18,11 +18,16 @@
           <%= menu_link_to 'All users', users_path %>
         </div>
       </div>
-      <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign in', user_session_path %>
-      <% end %>
+
+      <div class="justify-content-end">
+        <% if current_user %>
+          <%= link_to current_user.name, edit_user_registration_path, class: 'username' %>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete%>
+        <% else %>
+          <%= link_to 'Sign in', user_session_path, class: 'nav-link' %>
+        <% end %>
+      </div>
+      
     </nav>
     <% if notice.present? %>
       <div class="notice">
