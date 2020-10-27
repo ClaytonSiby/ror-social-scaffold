@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
+gem 'webpacker', '~> 5.2', '>= 5.2.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
