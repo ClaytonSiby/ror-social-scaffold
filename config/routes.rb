@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  # get 'friendships/create'
+  # get 'friendships'
+  post 'friendships/create'
   root 'posts#index'
 
   devise_for :users
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
-  resources :friendships, only: %i[create] do
+  resources :friendships, only: [:create] do
     collection do
       get 'accept_friend'
       get 'decline_friend'

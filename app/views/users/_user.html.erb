@@ -1,1 +1,43 @@
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      <h3>Expand Your network: </h3>
+      <% @users.each do |user| %>
+        <% if non_friend_and_not_current_user?(user) %>
+          <p>
+            <%= user.name %> <small><%= link_to 'See profile', user, class: 'text-success' %></small>
+            <button class="btn btn-sm btn-success">
+              <%= link_to 'Invite to Friendship', friendships_path, class: 'text-light' %>
+            </button>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-sm">
+      <h3>Pending Requests: </h3>
+      <% @pending_requests.each do |request| %>
+        <p>
+          <%= user.name %>
+        </p>
+      <% end %>
+    </div>
+
+    <div class="col-sm">
+      <h3>Received Requests: </h3>
+      <% @received_requests.each do |request| %>
+        <p>
+          <%= request.name %> <small><%= link_to 'See profile', request, class: 'text-success' %></small>
+          <button class="btn btn-sm btn-success">
+            <%= link_to 'Accept Request', accept_friend_friendships_path %>
+          </button>
+
+          <button class="btn btn-sm btn-danger">
+            <%= link_to 'Decline Request', accept_friend_friendships_path %>
+          </button>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
