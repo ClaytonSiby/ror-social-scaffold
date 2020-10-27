@@ -5,12 +5,17 @@
       <h3>Expand Your network: </h3>
       <% @users.each do |user| %>
         <% if non_friend_and_not_current_user?(user) %>
-          <p>
-            <%= user.name %> <small><%= link_to 'See profile', user, class: 'text-success' %></small>
-            <button class="btn btn-sm btn-success">
-              <%= link_to 'Invite to Friendship', friendships_path, class: 'text-light' %>
-            </button>
-          </p>
+          <div class="card">
+            <div class="card-body">
+              <p class="card-title"><%= user.name %></p>
+              <small><%= link_to 'See profile', user, class: 'text-success' %></small>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-sm btn-success">
+                <%= link_to 'Invite to Friendship', friendships_path, class: 'text-light' %>
+              </button>
+            </div>
+          </div>
         <% end %>
       <% end %>
     </div>
