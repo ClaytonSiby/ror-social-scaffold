@@ -3,9 +3,9 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @friends = current_user.friends
-    @pending_requests = current_user.pending_requests
-    @received_requests = current_user.received_requests
+    # @friends = current_user.friends
+    # @pending_requests = current_user.pending_friend_requests
+    # @received_requests = current_user.friend_requests
   end
 
   def show

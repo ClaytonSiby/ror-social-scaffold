@@ -13,17 +13,25 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
 
   has_many :requested_friendships, -> { where(confirmed: false) }, class_name: 'Friendship'
-  has_many :received_requests, -> { where(confirmed: false) }, class_name: 'Friendship', foreign_key: 'friend_id'
-  
-  has_many :friends, -> { where(confirmed: true) }, class_name: 'Friendship'
+
+  has_many :received_friendships, -> { where(confirmed: false) },
+            class_name: 'Friendship',
+            foreign_key: :friend_id
+
+  has_many :own_friends, -> { where(confirmed: true) }, class_name: 'Friendship'
+
+  has_many :friends, through: :own_friends, source: :friend
+
   has_many :pending_friends, through: :requested_friendships, source: :friend
+
   has_many :friendship_requests, through: :received_friendships, source: :user
 
   def confirm_friendship(user)
-    friend_record = received_requests.find_by(user_id: user.id)
-    friendship_record.confirmed = true
-    friend_record.save
+    friendship_record = received_friendships.find_by(user_id: user.id)
 
+    friendship_record.confirmed = true
+
+    friendship_record.save
     Friendship.create(user_id: id, friend_id: user.id, confirmed: true)
   end
 

@@ -22,16 +22,29 @@
 
     <div class="col-sm">
       <h5>Pending Requests: </h5>
-      <% @pending_requests.each do |request| %>
+      <% current_user.pending_friends.each do |request| %>
         <p>
           <%= request.name %>
         </p>
       <% end %>
     </div>
 
+    <div class="col-s">
+      <h5>My Friends</h5>
+
+      <% current_user.friends.each do |friend| %>
+        <div>
+          <p><%= friend.name %></p>
+          <button>
+            <%= link_to 'Unfriend', friendships_path(friend.id), method: :delete, class: 'btn btn-sm btn-danger text-light'%>
+          </button>
+        </div>
+      <% end %>
+    </div>
+
     <div class="col-sm">
       <h5>Received Requests: </h5>
-      <% @received_requests.each do |request| %>
+      <% current_user.friend_requests.each do |request| %>
         <div class="card">
           <div class="card-body">
             <p class="card-title"><%= request.name %></p>
@@ -39,11 +52,11 @@
           </div>
           <div class="card-footer">
             <button class="btn btn-sm btn-success">
-              <%= link_to 'Accept Request', accept_friend_friendships_path, class: 'text-light' %>
+              <%= link_to 'Accept Request', accept_friendship_friendships_path, class: 'text-light' %>
             </button>
 
             <button class="btn btn-sm btn-danger">
-              <%= link_to 'Decline Request', decline_friend_friendships_path, class: 'text-light' %>
+              <%= link_to 'Decline Request', decline_friendship_friendships_path, class: 'text-light' %>
             </button>
           </div>
         </div>
