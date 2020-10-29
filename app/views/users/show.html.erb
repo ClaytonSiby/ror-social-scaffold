@@ -1,9 +1,29 @@
-<section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-      <%= render @posts %>
-    </ul>
-  </article>
+<% provide(:title, @user.name ) %>
+<section class="container">
+  <% if non_friend?(@user) %>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-title ">Name: <span class="text-warning user_name"><%= @user.name %></span></p>
+      <div class="">
+          <h5 class="recent_posts">Recent Posts: </h5>
+          <% @posts.each do |post| %>
+            <div class="card mb-4">
+              <div class="card-body">
+                  <p class="text-italic"><%= post.content %></p>
+              </div>
+              <div class="card-footer">
+                <p>Creation Date: <span class="italic"><%= time_ago_in_words(post.created_at) %></span></p>
+                <p>Post Info: <%= link_to 'View Post', root_path , class: 'btn btn-sm btn-success' %> </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-sm btn-success">
+          <%= link_to 'Invite to Friendship', friendships_create_path %>
+        </button>
+      </div>
+    </div>
+  <% end %>
 </section>

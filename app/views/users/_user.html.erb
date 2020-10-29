@@ -1,8 +1,8 @@
 
-<div class="container-fluid">
+<div class="container mt-4">
   <div class="row">
     <div class="col-sm">
-      <h3>Expand Your network: </h3>
+      <h5>Expand Your network: </h5>
       <% @users.each do |user| %>
         <% if non_friend_and_not_current_user?(user) %>
           <div class="card">
@@ -12,7 +12,7 @@
             </div>
             <div class="card-footer">
               <button class="btn btn-sm btn-success">
-                <%= link_to 'Invite to Friendship', friendships_path, class: 'text-light' %>
+                <%= link_to 'Invite to Friendship', friendships_create_path, class: 'text-light' %>
               </button>
             </div>
           </div>
@@ -21,27 +21,32 @@
     </div>
 
     <div class="col-sm">
-      <h3>Pending Requests: </h3>
+      <h5>Pending Requests: </h5>
       <% @pending_requests.each do |request| %>
         <p>
-          <%= user.name %>
+          <%= request.name %>
         </p>
       <% end %>
     </div>
 
     <div class="col-sm">
-      <h3>Received Requests: </h3>
+      <h5>Received Requests: </h5>
       <% @received_requests.each do |request| %>
-        <p>
-          <%= request.name %> <small><%= link_to 'See profile', request, class: 'text-success' %></small>
-          <button class="btn btn-sm btn-success">
-            <%= link_to 'Accept Request', accept_friend_friendships_path %>
-          </button>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title"><%= request.name %></p>
+            <small><%= link_to 'See profile', request, class: 'text-success' %></small>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-sm btn-success">
+              <%= link_to 'Accept Request', accept_friend_friendships_path, class: 'text-light' %>
+            </button>
 
-          <button class="btn btn-sm btn-danger">
-            <%= link_to 'Decline Request', accept_friend_friendships_path %>
-          </button>
-        </p>
+            <button class="btn btn-sm btn-danger">
+              <%= link_to 'Decline Request', decline_friend_friendships_path, class: 'text-light' %>
+            </button>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

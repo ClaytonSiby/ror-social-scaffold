@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # get 'friendships'
-  post 'friendships/create'
+  get 'friendships/create'
   root 'posts#index'
 
   devise_for :users

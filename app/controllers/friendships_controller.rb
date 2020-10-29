@@ -1,10 +1,13 @@
 class FriendshipsController < ApplicationController
   def create
-    return if current_user.friend_sent.exists?(params[:user_id], confirmed: false)
+    return if current_user.friend_sent.exists?(params[:user_id])
 
+    # @friendship = current_user.friend_sent.build(friend_id: params[:user_id])
     @friendship = current_user.friend_sent.build(friend_id: params[:user_id])
 
-    if @friendship.save
+    @friendship.save
+
+    if @friendship
       flash[:notice] = 'Friend Request Sent'
     else
       flash[:alert] = 'Failed to send friend request.'
@@ -13,13 +16,13 @@ class FriendshipsController < ApplicationController
   end
 
   def accept_friend
-    @friendship = Friendship.find_by(user_id: params[:user_id], friend_id: current_user.id, confirmed: false)
+
+    # @friendship = Friendship.find_by(user_id: params[:user_id], friend_id: current_user.id, confirmed: false)
+    @friendship = Friendship.where(user_id: params[:user_id], friend_id: current_user.id, confirmed: false)
     
-    return if @friendship
+    return if @friendship # return if no record is found
 
-    @friendship.confirmed = true
-
-    if @friendship.save
+    if @friendship.create(confirmed: true)
       flash[:notice] = 'Friend Request Accepted!'
       @friendship_two = current_user.friend_sent.build(friend_id: params[:user_id], confirmed: true)
 
