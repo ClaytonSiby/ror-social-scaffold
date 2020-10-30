@@ -4,6 +4,6 @@ module UsersHelper
   end
 
   def non_friend?(user)
-    !current_user.friends.include?(user) && !current_user.friend_sent.include?(user)
+    !current_user.friends.include?(user)
   end
 end
