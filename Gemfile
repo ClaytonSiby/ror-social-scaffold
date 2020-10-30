@@ -52,6 +52,8 @@ end
 
 group :test do
   gem 'rspec'
+
+  gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
 end
 
 group :development do
