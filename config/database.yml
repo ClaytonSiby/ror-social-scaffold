@@ -4,25 +4,22 @@ default: &default
   encoding: unicode
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
 development:
   <<: *default
-  database: ror_social_scaffold_development
-  username: ror_social_scaffold
-  password: mrSiby3099
+  database: postgres_development
+  username: postgres
+  password: definite
   host: localhost
   port: 5432
-
 test:
   <<: *default
   database: friend_ships_test
   host: localhost
   port: 5432
-  username: ror_social_scaffold
-  password: mrSiby3099
-
+  username: postgres
+  password: definite
 production:
   <<: *default
-  database: ror_social_scaffold_production
-  username: ror_social_scaffold
-  password: <%= ENV['ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD'] %>
+  database: postgres_production
+  username: postgres
+  password: <%= ENV['POSTGRES_DATABASE_PASSWORD'] %>
