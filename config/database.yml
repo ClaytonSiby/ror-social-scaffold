@@ -7,9 +7,9 @@ default: &default
 
 development:
   <<: *default
-  database: postgres_development
-  username: postgres
-  password: definite
+  database: ror_social_scaffold_development
+  username: ror_social_scaffold
+  password: mrSiby3099
   host: localhost
   port: 5432
 
@@ -18,11 +18,11 @@ test:
   database: friend_ships_test
   host: localhost
   port: 5432
-  username: postgres
-  password: definite
+  username: ror_social_scaffold
+  password: mrSiby3099
 
 production:
   <<: *default
-  database: postgres_production
-  username: postgres
-  password: <%= ENV['POSTGRES_DATABASE_PASSWORD'] %>
+  database: ror_social_scaffold_production
+  username: ror_social_scaffold
+  password: <%= ENV['ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD'] %>
