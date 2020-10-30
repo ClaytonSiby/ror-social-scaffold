@@ -106,6 +106,14 @@
           null
         ]
       },
+      "/home/clayton/ror-social-scaffold/app/models/friendship.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
       "/home/clayton/ror-social-scaffold/app/models/post.rb": {
         "lines": [
           1,
@@ -136,14 +144,6 @@
           1,
           1,
           null,
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/clayton/ror-social-scaffold/app/models/friendship.rb": {
-        "lines": [
-          1,
           1,
           1,
           null
@@ -364,6 +364,6 @@
         }
       }
     },
-    "timestamp": 1604085017
+    "timestamp": 1604086740
   }
 }
