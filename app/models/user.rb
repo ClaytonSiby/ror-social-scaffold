@@ -10,29 +10,30 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :friendships, dependent: :destroy
+  has_many :friendships
 
-  has_many :requested_friendships, -> { where(confirmed: false) }, class_name: 'Friendship'
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
-  has_many :received_friendships, -> { where(confirmed: false) },
-            class_name: 'Friendship',
-            foreign_key: :friend_id
+  def friends
+    friends_list = friendships.map { |friendship| friendship.friend if friendship.confirmed }
 
-  has_many :own_friends, -> { where(confirmed: true) }, class_name: 'Friendship'
+    friends_list += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
 
-  has_many :friends, through: :own_friends, source: :friend
+    friends_list.compact
+  end
 
-  has_many :pending_friends, through: :requested_friendships, source: :friend
+  def pending_requests
+    friendships.map { |friendship| friendship.friend if !friendship.confirmed }.compact
+  end
 
-  has_many :friendship_requests, through: :received_friendships, source: :user
+  def friendship_requests
+    inverse_friendships.map { |friendship| friendship.user if !friendship.confirmed }.compact
+  end
 
   def confirm_friendship(user)
-    friendship_record = received_friendships.find_by(user_id: user.id)
-
+    friendship_record = inverse_friendships.find { |friendship| friendship.user == user }
     friendship_record.confirmed = true
-
     friendship_record.save
-    Friendship.create(user_id: id, friend_id: user.id, confirmed: true)
   end
 
   def friend?(user)

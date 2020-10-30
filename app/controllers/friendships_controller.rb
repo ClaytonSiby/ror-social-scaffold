@@ -1,41 +1,41 @@
 class FriendshipsController < ApplicationController
   
-  def create
-    @friendship = current_user.friendships.new(friend_id: params[:user_id], confirmed: false)
+  def send_request
+    friend = User.find(params[:id])
 
-    if @friendship.save!
+    @friendship = Friendship.new(user_id: current_user.id, friend_id: friend.id)
+    
+    if @friendship.save
       flash[:notice] = 'Friend request sent!'
-
     else
-      flash[:alert] = 'Couldn\'t send friend request!'
+      flash[:alert] = 'Failed to send friend request'
+    end
+    redirect_to users_path
+  end
+
+  def accept_friend
+    friend = User.find(params[:id])
+
+    if current_user.confirm_friendship(friend)
+      flash[:notice] = "#{friend.name} is now a friend!"
+    else
+      flash[:notice] = 'Failed to accept friend request'
     end
 
     redirect_to users_path
   end
 
-  def accept_friendship
-    @friend = current_user.friendship_requests.find(params[:friend])
+  def destroy_friendship
+    friend = User.find(params[:id])
 
-    if current_user.confirm_friendship(@friend)
-      flash[:notice] = "You're now friends with #{@friend.name}"
-
-    else
-      flash[:alert] = 'Failed to accept friend request.'
+    friendship = Friendship.find do |friendship|
+      (friendship.user_id == current_user.id && friendship.friend_id == friend.id) ||
+      (friendship.user_id == friend.id && friendship.friend_id == current_user.id)
     end
 
-    redirect_to users_path
-  end
+    friendship&.destroy
 
-  def decline_friendship
-    @friendship = current_user.friendship_requests.find(params[:friend])
-
-    if current_user.decline_friend(@friend)
-      flash[:notice] = 'Friend request declined successfully!'
-
-    else
-      flash[:alert] = 'Failed to decline friend request!'
-    end
-
+    flash[:notice] = "Request cancelled or #{friend.name} is no longer a friend!"
     redirect_to users_path
   end
 end

@@ -12,7 +12,7 @@
             </div>
             <div class="card-footer">
               <button class="btn btn-sm btn-success">
-                <%= link_to 'Invite to Friendship', friendships_create_path, class: 'text-light' %>
+                <%= link_to 'Invite to Friendship', send_request_path(user.id), class: 'text-light' %>
               </button>
             </div>
           </div>
@@ -22,29 +22,23 @@
 
     <div class="col-sm">
       <h5>Pending Requests: </h5>
-      <% current_user.pending_friends.each do |request| %>
-        <p>
-          <%= request.name %>
-        </p>
-      <% end %>
-    </div>
-
-    <div class="col-s">
-      <h5>My Friends</h5>
-
-      <% current_user.friends.each do |friend| %>
-        <div>
-          <p><%= friend.name %></p>
-          <button>
-            <%= link_to 'Unfriend', friendships_path(friend.id), method: :delete, class: 'btn btn-sm btn-danger text-light'%>
-          </button>
+      <% current_user.pending_requests.each do |request| %>
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title"><%= request.name %></p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-sm btn-danger">
+              <%= link_to 'Cancel Friend Request', destroy_friendship_path(request.id), class: 'text-light'%>
+            </button>
+          </div>
         </div>
       <% end %>
     </div>
 
     <div class="col-sm">
       <h5>Received Requests: </h5>
-      <% current_user.friend_requests.each do |request| %>
+      <% current_user.friendship_requests.each do |request| %>
         <div class="card">
           <div class="card-body">
             <p class="card-title"><%= request.name %></p>
@@ -52,11 +46,11 @@
           </div>
           <div class="card-footer">
             <button class="btn btn-sm btn-success">
-              <%= link_to 'Accept Request', accept_friendship_friendships_path, class: 'text-light' %>
+              <%= link_to 'Accept Request', accept_friend_path(request.id), class: 'text-light' %>
             </button>
 
             <button class="btn btn-sm btn-danger">
-              <%= link_to 'Decline Request', decline_friendship_friendships_path, class: 'text-light' %>
+              <%= link_to 'Decline Request', destroy_friendship_path(request.id), class: 'text-light' %>
             </button>
           </div>
         </div>
