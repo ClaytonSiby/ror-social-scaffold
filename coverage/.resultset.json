@@ -149,67 +149,6 @@
           null
         ]
       },
-      "/home/clayton/ror-social-scaffold/app/controllers/friendships_controller.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null
-        ]
-      },
-      "/home/clayton/ror-social-scaffold/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null
-        ]
-      },
       "/home/clayton/ror-social-scaffold/app/controllers/likes_controller.rb": {
         "lines": [
           0,
@@ -321,6 +260,70 @@
         "branches": {
         }
       },
+      "/home/clayton/ror-social-scaffold/app/controllers/friendships_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/clayton/ror-social-scaffold/app/controllers/application_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/home/clayton/ror-social-scaffold/app/jobs/application_job.rb": {
         "lines": [
           0,
@@ -360,6 +363,6 @@
         }
       }
     },
-    "timestamp": 1604254861
+    "timestamp": 1604255791
   }
 }
