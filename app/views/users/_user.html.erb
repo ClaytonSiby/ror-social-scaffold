@@ -21,28 +21,6 @@
     </div>
 
     <div class="col-sm-4">
-      <h5 class="category-title">My Friends:</h5>
-      <% @friends.each do |friend| %>
-      <div class="card mb-2">
-        <div class="card-body">
-          <p class="card-title">
-              <%= friend.name%>
-              <span>empty</span>
-              <span>
-              <small><%= link_to 'See profile', friend, class: 'text-success' %></small>
-              </span>
-          </p>
-        </div>
-        <div class="card-footer">
-          <button class="btn btn-sm btn-danger">
-              <%= link_to 'Unfriend', destroy_friendship_path(friend.id), class: 'text-light'%>
-          </button>
-        </div>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="col-sm-4">
       <h5 class="category-title">Pending Requests: </h5>
       <% current_user.pending_requests.each do |request| %>
         <div class="card mb-2">
@@ -81,6 +59,27 @@
               <%= link_to 'Decline Request', destroy_friendship_path(request.id), class: 'text-light' %>
             </button>
           </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-sm-4">
+      <h5 class="category-title">My Friends:</h5>
+      <% @friends.each do |friend| %>
+      <div class="card mb-2">
+        <div class="card-body">
+          <p class="card-title">
+              <%= friend.name%>
+              <span>
+              <small><%= link_to 'See profile', friend, class: 'text-success' %></small>
+              </span>
+          </p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-sm btn-danger">
+              <%= link_to 'Unfriend', destroy_friendship_path(friend.id), class: 'text-light'%>
+          </button>
+        </div>
         </div>
       <% end %>
     </div>
