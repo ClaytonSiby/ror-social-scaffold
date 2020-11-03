@@ -39,4 +39,8 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
+
+  def mutual_friends(user)
+    friends & user.friends
+  end
 end
