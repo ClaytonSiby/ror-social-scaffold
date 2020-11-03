@@ -41,6 +41,8 @@ yarn install
 
 Setup database with:
 
+- Reconfigure database.yml file for your local environment (i.e configuring development & test databases) to use a local username & password of your choice.
+
 ```
 rails db:drop db:create db:migrate
 ```
