@@ -1,7 +1,5 @@
 # Scaffold for social media app with Ruby on Rails
-
 > This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
-
 ## Built With
 
 - Ruby v2.7.0
@@ -10,7 +8,6 @@
 ## Live Demo
 
 TBA
-
 
 ## Getting Started
 
@@ -30,6 +27,14 @@ Install gems with:
 bundle install
 ```
 
+### Add Bootstrap-4 dependencies by running:
+
+```
+yarn add bootsrap jquery popper.js'
+```
+
+or
+
 ```
 yarn install
 ```
@@ -37,8 +42,7 @@ yarn install
 Setup database with:
 
 ```
-   rails db:create
-   rails db:migrate
+rails db:drop db:create db:migrate
 ```
 
 ### Github Actions
@@ -49,7 +53,6 @@ To make sure the linters' checks using Github Actions work properly, you should 
 2. Create the `feature/branch` and push.
 3. Start working on your milestone as usual.
 4. Open a PR from the `feature/branch` when your work is done.
-
 
 ### Usage
 
@@ -75,23 +78,31 @@ TBA
 
 ## Authors
 
-TBA
+:bust_in_silhouette: **Rumbidzayi Mudziviri**
+- Github: [@Rumbie-Mudzie7](https://github.com/Rumbie-Mudzie7)
+- Twitter: [@RumbidzayiMudz3](https://twitter.com/RumbidzayiMudz3)
+- Linkedin: [rumbidzayimudziviri](https://www.linkedin.com/in/rumbidzayi-mudziviri)
+- rumbiemudzie@gmail.com
 
-## 🤝 Contributing
+:bust_in_silhouette: **Clayton Siby**
+- Github: [@Clayton Siby](https://github.com/ClaytonSiby)
+- Twitter: [@ClaytonSiby](https://twitter.com/ClaytonSiby)
+- Linkedin: [linkedin](https://www.linkedin.com/in/clayton-siby/)
+- claytonsiby@gmail.com
+
+## :handshake: Contributing
 
 Contributions, issues and feature requests are welcome!
-
 Feel free to check the [issues page](issues/).
 
 ## Show your support
 
-Give a ⭐️ if you like this project!
+Give a :star:️ if you like this project!
 
 ## Acknowledgments
 
 TBA
 
-## 📝 License
+## :memo: License
 
 TBA
-
