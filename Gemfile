@@ -55,7 +55,7 @@ group :test do
 
   gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
 
-  gem 'capybara', '>= 2.15' 
+  gem 'capybara', '>= 2.15'
 
   gem 'selenium-webdriver'
 

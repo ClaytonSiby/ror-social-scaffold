@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "CreateFriendships", type: :feature do
+RSpec.feature 'CreateFriendships', type: :feature do
   before(:each) { User.create!(name: 'John', email: 'john@gmail.com', password: 'johndoe') }
   scenario 'User creates a new friendship' do
     visit new_user_registration_path

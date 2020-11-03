@@ -9,14 +9,14 @@ $primary-color-text: #212121;
 $divider-color: #bdbdbd;
 
 .login {
-    padding: 8px;
-    width: 50%;
-    border: none;
-    border-radius: 4px;
-    background-color: $primary-color-dark;
-    color: $primary-color-light;
-    text-transform: uppercase;
-    font-weight: 900;
+  padding: 8px;
+  width: 50%;
+  border: none;
+  border-radius: 4px;
+  background-color: $primary-color-dark;
+  color: $primary-color-light;
+  text-transform: uppercase;
+  font-weight: 900;
 }
 
 .login:hover {
