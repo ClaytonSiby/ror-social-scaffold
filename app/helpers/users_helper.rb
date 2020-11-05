@@ -20,6 +20,8 @@ module UsersHelper
       link_to 'Cancel Request', destroy_friendship_path(user.id), class: 'text-light'
     elsif in_friend_request?(user)
       link_to 'Decline Request', destroy_friendship_path(user.id), class: 'text-light'
+    elsif non_friend?(user)
+      link_to 'Invite to Friendship', send_request_path(user.id), class: 'text-light'
     elsif current_user.friend?(user)
       link_to 'Unfriend', destroy_friendship_path(user.id), class: 'text-light'
     end
