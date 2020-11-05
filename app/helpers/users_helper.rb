@@ -14,4 +14,14 @@ module UsersHelper
   def in_friend_request?(user)
     current_user.friendship_requests.include?(user)
   end
+
+  def determine_friendship(user)
+    if in_pending_request?(user)
+      link_to 'Cancel Request', destroy_friendship_path(user.id), class: 'text-light'
+    elsif in_friend_request?(user)
+      link_to 'Decline Request', destroy_friendship_path(user.id), class: 'text-light'
+    elsif current_user.friends.include?(user)
+      link_to 'Decline Request', destroy_friendship_path(user.id), class: 'text-light'
+    end
+  end
 end
