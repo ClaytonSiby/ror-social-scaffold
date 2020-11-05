@@ -1,3 +1,25 @@
 // Place all the styles related to the Friendships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$primary-color-dark: #689f38;
+$primary-color: #8bc34a;
+$primary-color-light: #dcedc8;
+$primary-color-text: #212121;
+$divider-color: #bdbdbd;
+
+.login {
+  padding: 8px;
+  width: 50%;
+  border: none;
+  border-radius: 4px;
+  background-color: $primary-color-dark;
+  color: $primary-color-light;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.login:hover {
+  background-color: $primary-color;
+  color: #fff;
+}

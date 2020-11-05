@@ -69,11 +69,9 @@
       <div class="card mb-2">
         <div class="card-body">
           <p class="card-title">
-              <%= friend.name%>
-              <span>
-              <small><%= link_to 'See profile', friend, class: 'text-success' %></small>
-              </span>
+            <%= friend.name %>
           </p>
+          <small class="text-success"><%= link_to 'See Profile', friend, class: 'text-success' %></small>
         </div>
         <div class="card-footer">
           <button class="btn btn-sm btn-danger">
